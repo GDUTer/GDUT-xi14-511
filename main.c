@@ -4,124 +4,123 @@
 
 int main()
 {
-	int lens,scan;//¼ì²âÊäÈëÊ±ËùÓÃ±äÁ¿
-	int flag = 0,cflag=0;//flag£ºÊÇ·ñ´´½¨Á´±íµÄ±êÖ¾Î»   cflag£ºÁ´±íÊÇ·ñ³É»·±êÖ¾Î»
-	List list1=NULL;//Á´±íÃûÎªlist1
-	Menu();//Êä³ö²Ëµ¥
+	int lens,scan;//æ£€æµ‹è¾“å…¥æ—¶æ‰€ç”¨å˜é‡
+	int flag = 0,cflag=0;//flagï¼šæ˜¯å¦åˆ›å»ºé“¾è¡¨çš„æ ‡å¿—ä½   cflagï¼šé“¾è¡¨æ˜¯å¦æˆç¯æ ‡å¿—ä½
+	List list1=NULL;//é“¾è¡¨åä¸ºlist1
+	Menu();//è¾“å‡ºèœå•
 	while (1) {
-		printf("\nÇëÑ¡Ôñ²Ëµ¥±àºÅ:");
-		scan = Scanf_d();//¼ì²âÊäÈëµÄ²Ëµ¥±àºÅ
-		if (!(scan < 13 && scan >0)) {//ÊäÈë²»ºÏ·¨²Ëµ¥±àºÅÊ±£¬ÌáÊ¾
-			printf("ÇëÊäÈëÕıÈ·µÄ²Ëµ¥±àºÅ\n");
-			scan = Scanf_d();
+		printf("\nè¯·é€‰æ‹©èœå•ç¼–å·:");
+		scan = Scanf_d();//æ£€æµ‹è¾“å…¥çš„èœå•ç¼–å·
+		if (!(scan < 13 && scan >0)) {//è¾“å…¥ä¸åˆæ³•èœå•ç¼–å·æ—¶ï¼Œæç¤º
+			printf("è¯·è¾“å…¥æ­£ç¡®çš„èœå•ç¼–å·\n");
 		}
-		else if (scan == 12) { //ÊäÈë12Ê±£¬Çå¿ÕÏÔÊ¾²¢ÍË³öÏµÍ³
+		else if (scan == 12) { //è¾“å…¥12æ—¶ï¼Œæ¸…ç©ºæ˜¾ç¤ºå¹¶é€€å‡ºç³»ç»Ÿ
 			system("cls");
 			return 0;
 		}
-		else if (scan < 13 && scan >0)//Èç¹ûÊäÈëºÏ·¨²Ëµ¥±àºÅ
+		else if (scan < 13 && scan >0)//å¦‚æœè¾“å…¥åˆæ³•èœå•ç¼–å·
 		{
-			if(scan==1){//´´½¨Ò»¸öĞÂÁ´±í
-				if (flag)//ÒÑ´æÔÚÁ´±í
+			if(scan==1){//åˆ›å»ºä¸€ä¸ªæ–°é“¾è¡¨
+				if (flag)//å·²å­˜åœ¨é“¾è¡¨
 				{
 					while (1)
 					{
-						printf("ÒÑ´æÔÚÁ´±í£¬ÊÇ·ñ¸²¸Ç£¨ÇëÊäÈë0.·µ»Ø 1.¸²¸Ç£©£º");
+						printf("å·²å­˜åœ¨é“¾è¡¨ï¼Œæ˜¯å¦è¦†ç›–ï¼ˆè¯·è¾“å…¥0.è¿”å› 1.è¦†ç›–ï¼‰ï¼š");
 						scan=Scanf_d();
-						if (scan == 1) {//Ñ¡Ôñ1.¸²¸Ç
-							printf("ÇëÊäÈë´´½¨Á´±íµÄ³¤¶È:");
-							while (1)//´´½¨³É¹¦Ê±ÍË³ö£¬ÊäÈë´íÎóÊ±ÌáÊ¾
+						if (scan == 1) {//é€‰æ‹©1.è¦†ç›–
+							printf("è¯·è¾“å…¥åˆ›å»ºé“¾è¡¨çš„é•¿åº¦:");
+							while (1)//åˆ›å»ºæˆåŠŸæ—¶é€€å‡ºï¼Œè¾“å…¥é”™è¯¯æ—¶æç¤º
 							{
 								lens=Scanf_d();
 								if (lens >= 0) {
 									CreateLinkList(&list1, lens);
-									printf("´´½¨³É¹¦\n");
+									printf("åˆ›å»ºæˆåŠŸ\n");
 									Output(list1);
 									flag = 1;
 									break;
 								}
-								else { printf("´´½¨³¤¶È²»ÄÜÎª¸ºÊı£¬ÇëÖØĞÂÊäÈë£º"); }
+								else { printf("åˆ›å»ºé•¿åº¦ä¸èƒ½ä¸ºè´Ÿæ•°ï¼Œè¯·é‡æ–°è¾“å…¥ï¼š"); }
 							}	
 							break;
 						}
-						else if (scan == 0) {//Ñ¡Ôñ0.·µ»Ø
+						else if (scan == 0) {//é€‰æ‹©0.è¿”å›
 							break;
 						}
-						else { printf("ÎŞÊäÈëÑ¡Ïî%d£¬ÇëÖØĞÂÊäÈë\n", scan); }//ÊäÈë²»ºÏ·¨£¬ÌáÊ¾
+						else { printf("æ— è¾“å…¥é€‰é¡¹%dï¼Œè¯·é‡æ–°è¾“å…¥\n", scan); }//è¾“å…¥ä¸åˆæ³•ï¼Œæç¤º
 					}
 				}
-				else {//Á´±í»¹Î´Éú³É
-					printf("ÇëÊäÈë´´½¨Á´±íµÄ³¤¶È:");
+				else {//é“¾è¡¨è¿˜æœªç”Ÿæˆ
+					printf("è¯·è¾“å…¥åˆ›å»ºé“¾è¡¨çš„é•¿åº¦:");
 					while (1) {
 						lens=Scanf_d();
 						if (lens >= 0) {
 							CreateLinkList(&list1, lens);
-							printf("´´½¨³É¹¦\n");
+							printf("åˆ›å»ºæˆåŠŸ\n");
 							Output(list1);
 							flag = 1;
 							break;
 						}
-						else { printf("´´½¨³¤¶È²»ÄÜÎª¸ºÊı£¬ÇëÖØĞÂÊäÈë£º"); }//ÊäÈë²»ºÏ·¨£¬ÌáÊ¾
+						else { printf("åˆ›å»ºé•¿åº¦ä¸èƒ½ä¸ºè´Ÿæ•°ï¼Œè¯·é‡æ–°è¾“å…¥ï¼š"); }//è¾“å…¥ä¸åˆæ³•ï¼Œæç¤º
 					}
 				}
 			}
-			if (flag) {//ÅĞ¶ÏÁ´±íÊÇ·ñ´æÔÚ£¬Á´±í´æÔÚ²ÅÄÜ½øĞĞÒÔÏÂ²Ù×÷
-				if (scan == 6) {//¶ÁÈë6Ê±£¬ÅĞ¶ÏÁ´±íÊÇ·ñ³É»·
+			if (flag) {//åˆ¤æ–­é“¾è¡¨æ˜¯å¦å­˜åœ¨ï¼Œé“¾è¡¨å­˜åœ¨æ‰èƒ½è¿›è¡Œä»¥ä¸‹æ“ä½œ
+				if (scan == 6) {//è¯»å…¥6æ—¶ï¼Œåˆ¤æ–­é“¾è¡¨æ˜¯å¦æˆç¯
 					CircularStatus(list1);
 				}
 				else {
-					if (cflag) { printf("Á´±íÒÑ³É»·£¬ÎŞ·¨½øĞĞ´Ë²Ù×÷"); }//ÔÚÁ´±í³É»·Ê±£¬ÒÔÏÂ²Ù×÷ÎŞ·¨½øĞĞ
-					else {//ÔÚÁ´±í²»³É»·Ê±£¬¿ÉÒÔ½øĞĞÒÔÏÂ²Ù×÷
-						if (scan == 2) {//²åÈëÒ»¸öÊı
+					if (cflag) { printf("é“¾è¡¨å·²æˆç¯ï¼Œæ— æ³•è¿›è¡Œæ­¤æ“ä½œ"); }//åœ¨é“¾è¡¨æˆç¯æ—¶ï¼Œä»¥ä¸‹æ“ä½œæ— æ³•è¿›è¡Œ
+					else {//åœ¨é“¾è¡¨ä¸æˆç¯æ—¶ï¼Œå¯ä»¥è¿›è¡Œä»¥ä¸‹æ“ä½œ
+						if (scan == 2) {//æ’å…¥ä¸€ä¸ªæ•°
 							int num, n;
 							Output(list1);
-							printf("ÄúÒª²åÈëµÄÊıÊÇ£º");
+							printf("æ‚¨è¦æ’å…¥çš„æ•°æ˜¯ï¼š");
 							num = Scanf_d();
-							printf("½«Òª²åÈëµ½Á´±íµÄÎ»ÖÃ£¨µÚ¼¸¸ö£©ÊÇ£º");
+							printf("å°†è¦æ’å…¥åˆ°é“¾è¡¨çš„ä½ç½®ï¼ˆç¬¬å‡ ä¸ªï¼‰æ˜¯ï¼š");
 							n = Scanf_d();
 							Insert(&list1, num, n);
 							Output(list1);
 						}
-						else if (scan == 3) {//ÏÔÊ¾Á´±í
+						else if (scan == 3) {//æ˜¾ç¤ºé“¾è¡¨
 							Output(list1);
 						}
-						else if (scan == 4) {//·´ÏòÁ´±í²Ù×÷
+						else if (scan == 4) {//åå‘é“¾è¡¨æ“ä½œ
 							Reverse(&list1);
 							Output(list1);
 						}
-						else if (scan == 5) {//Êä³öÖĞ¼ä½Úµã
+						else if (scan == 5) {//è¾“å‡ºä¸­é—´èŠ‚ç‚¹
 							GetMidNum(list1);
 						}
-						else if (scan == 7) {//É¾³ıÁ´±íÖĞµÄÒ»¸ö½áµã
+						else if (scan == 7) {//åˆ é™¤é“¾è¡¨ä¸­çš„ä¸€ä¸ªç»“ç‚¹
 							int n, num;
 							Output(list1);
-							printf("½«ÒªÉ¾³ıµÄ½ÚµãÊÇ£¨µÚ¼¸¸ö£©£º");
+							printf("å°†è¦åˆ é™¤çš„èŠ‚ç‚¹æ˜¯ï¼ˆç¬¬å‡ ä¸ªï¼‰ï¼š");
 							n = Scanf_d();
 							num = Delete(&list1, n);
 							Output(list1);
 						}
-						else if (scan == 8) {//ÆæÅ¼·´Ïò²Ù×÷
+						else if (scan == 8) {//å¥‡å¶åå‘æ“ä½œ
 							Reverse_1_2(&list1);
 							Output(list1);
 						}
-						else if (scan == 9) {//²éÑ¯Á´±íÖĞÊÇ·ñÓĞÊı×Önum
-							printf("ÇëÊäÈëÒª²éÕÒµÄÊı¾İ:");
+						else if (scan == 9) {//æŸ¥è¯¢é“¾è¡¨ä¸­æ˜¯å¦æœ‰æ•°å­—num
+							printf("è¯·è¾“å…¥è¦æŸ¥æ‰¾çš„æ•°æ®:");
 							int num = Scanf_d();
 							FindNum(list1,num);
 						}
-						else if (scan == 10) {//Á´±í³É»·²Ù×÷
+						else if (scan == 10) {//é“¾è¡¨æˆç¯æ“ä½œ
 							Circle(&list1);
 							cflag = 1;
 						}
-						else if (scan == 11) {//Çå¿ÕÁ´±í³ıÍ·½ÚµãÍâËùÓĞ½áµã
+						else if (scan == 11) {//æ¸…ç©ºé“¾è¡¨é™¤å¤´èŠ‚ç‚¹å¤–æ‰€æœ‰ç»“ç‚¹
 							Clean(&list1);
-							printf("Á´±íÇå³ı³É¹¦^-^");
+							printf("é“¾è¡¨æ¸…é™¤æˆåŠŸ^-^");
 							Output(list1);
 						}
 					}
 				}
 			}
-			else { printf("ÔİÎŞÁ´±í£¬ÇëÏÈ´´½¨Ò»¸öÁ´±í"); }//Èô²»´æÔÚÁ´±í£¬ÌáÊ¾
+			else { printf("æš‚æ— é“¾è¡¨ï¼Œè¯·å…ˆåˆ›å»ºä¸€ä¸ªé“¾è¡¨"); }//è‹¥ä¸å­˜åœ¨é“¾è¡¨ï¼Œæç¤º
 		}
 	}
 }
@@ -129,23 +128,23 @@ int main()
 //void Menu()
 //{
 //	printf("\n\n\n"
-//		"*************** ÏµÍ³¹¦ÄÜ²Ëµ¥ ***************\n"
+//		"*************** ç³»ç»ŸåŠŸèƒ½èœå• ***************\n"
 //		"--------------------------------------------\n"
-//		"	1.´´½¨ĞÂÁ´±í		2.²åÈëĞÂ½Úµã\n"
-//		"	3.Êä³öÁ´±í		4.½«Á´±í·´Ïò\n"
-//		"	5.ÕÒµ½µ¥Á´±íÖĞµã	6.ÅĞ¶ÏÊÇ·ñ³É»·\n"
-//		"	7.É¾³ı½ÚµãÈ¡Öµ		8.ÆæÅ¼·´×ª\n"
-//		"	9.²éÑ¯Êı¾İÊÇ·ñÔÚ±íÖĞ	10.¹¹ÔìÑ­»·Á´±í\n"
-//		"	11.Çå¿ÕÁ´±í		12.ÍË³öÏµÍ³\n"
+//		"	1.åˆ›å»ºæ–°é“¾è¡¨		2.æ’å…¥æ–°èŠ‚ç‚¹\n"
+//		"	3.è¾“å‡ºé“¾è¡¨		4.å°†é“¾è¡¨åå‘\n"
+//		"	5.æ‰¾åˆ°å•é“¾è¡¨ä¸­ç‚¹	6.åˆ¤æ–­æ˜¯å¦æˆç¯\n"
+//		"	7.åˆ é™¤èŠ‚ç‚¹å–å€¼		8.å¥‡å¶åè½¬\n"
+//		"	9.æŸ¥è¯¢æ•°æ®æ˜¯å¦åœ¨è¡¨ä¸­	10.æ„é€ å¾ªç¯é“¾è¡¨\n"
+//		"	11.æ¸…ç©ºé“¾è¡¨		12.é€€å‡ºç³»ç»Ÿ\n"
 //		"--------------------------------------------\n");
 //}
 //
-//Status Output(List list)//Ë³ĞòÊä³öÁ´±íÖĞÃ¿¸ö½ÚµãµÄÊı
+//Status Output(List list)//é¡ºåºè¾“å‡ºé“¾è¡¨ä¸­æ¯ä¸ªèŠ‚ç‚¹çš„æ•°
 //{
 //	Node* p=list;
 //	if (p) {
 //		p = p->next;
-//		printf("µ±Ç°Á´±íÎª£º");
+//		printf("å½“å‰é“¾è¡¨ä¸ºï¼š");
 //		if (p) {
 //			for (;p; p = p->next) {
 //				printf("%d-->", p->value);
@@ -155,24 +154,24 @@ int main()
 //		return SUCCESS;
 //	}
 //	else {
-//		printf("Á´±í²»´æÔÚ\n");
+//		printf("é“¾è¡¨ä¸å­˜åœ¨\n");
 //		return ERROR;
 //	}
 //
 //}
 //
-//Status CreateLinkList(List* plist,int lens)//´´½¨Ò»¸ö½ÚµãÊıÎªlensµÄÁ´±í
+//Status CreateLinkList(List* plist,int lens)//åˆ›å»ºä¸€ä¸ªèŠ‚ç‚¹æ•°ä¸ºlensçš„é“¾è¡¨
 //{
 //	int i,num;
-//	Node* pnode;   //ĞÂ½Úµã
-//	*plist = (Node*)malloc(sizeof(Node));//Éú³ÉÍ·½Úµã
+//	Node* pnode;   //æ–°èŠ‚ç‚¹
+//	*plist = (Node*)malloc(sizeof(Node));//ç”Ÿæˆå¤´èŠ‚ç‚¹
 //	if (*plist) {
-//		Node* p = *plist;//Ö¸Ïò×îºóÒ»¸ö½Úµã
+//		Node* p = *plist;//æŒ‡å‘æœ€åä¸€ä¸ªèŠ‚ç‚¹
 //		if (lens > 0)
 //		{
 //			for (i = 1;i <= lens;i++)
 //			{
-//				printf("ÇëÊäÈëµÚ%d¸öÊı:", i);
+//				printf("è¯·è¾“å…¥ç¬¬%dä¸ªæ•°:", i);
 //				pnode = (Node*)malloc(sizeof(Node));
 //				if (pnode)
 //				{
@@ -190,32 +189,32 @@ int main()
 //	return SUCCESS;
 //}
 //
-//Status Insert(List* plist,int num ,int n) //²åÈëÒ»¸ö½Úµã£¨ÊıÖµÎªnum£©µ½µÚn¸öÎ»ÖÃ
+//Status Insert(List* plist,int num ,int n) //æ’å…¥ä¸€ä¸ªèŠ‚ç‚¹ï¼ˆæ•°å€¼ä¸ºnumï¼‰åˆ°ç¬¬nä¸ªä½ç½®
 //{
 //
 //	int i=1;
 //	Node* p=*plist;
 //	if (n < 1) {
-//		printf("²åÈëÊ§°Ü£¬²»´æÔÚµÚ%d¸öÎ»ÖÃ\n", n);
+//		printf("æ’å…¥å¤±è´¥ï¼Œä¸å­˜åœ¨ç¬¬%dä¸ªä½ç½®\n", n);
 //		return ERROR;
 //	}
 //	else {
 //		if (n > 1) {
 //			if (p->next) {
 //				p = p->next;
-//				//ÕÒµ½µÚn-1¸ö½Úµã
+//				//æ‰¾åˆ°ç¬¬n-1ä¸ªèŠ‚ç‚¹
 //				while (p->next && i < n - 1) {
 //					p = p->next;
 //					i++;
 //				}
 //			}
 //			if (n > i + 1) {
-//				printf("²åÈëÊ§°Ü£¬²»´æÔÚµÚ%d¸öÎ»ÖÃ\n", n);
+//				printf("æ’å…¥å¤±è´¥ï¼Œä¸å­˜åœ¨ç¬¬%dä¸ªä½ç½®\n", n);
 //				return ERROR;
 //			}
 //		}
 //		else if (n == 1) { p = *plist; }
-//		//´´½¨Ò»¸öĞÂ½Úµã²¢²åÈë
+//		//åˆ›å»ºä¸€ä¸ªæ–°èŠ‚ç‚¹å¹¶æ’å…¥
 //		Node* pnode = (Node*)malloc(sizeof(Node));
 //		if (pnode) {
 //			pnode->value = num;
@@ -231,7 +230,7 @@ int main()
 //		}
 //		else return ERROR;
 //	}
-//	printf("²åÈë³É¹¦^-^\n");
+//	printf("æ’å…¥æˆåŠŸ^-^\n");
 //	return SUCCESS;
 //}
 //
@@ -243,47 +242,47 @@ int main()
 //	if (p) {
 //		int num;
 //		if (n > 1) {
-//			//ÕÒµ½µÚn¸ö½Úµã
+//			//æ‰¾åˆ°ç¬¬nä¸ªèŠ‚ç‚¹
 //			while (p->next && cnt < n - 1) {
 //				p = p->next;
 //				++cnt;
 //			}
 //			if (p->next && p->next->next) {
-//				//É¾³ıµÚn¸ö½Úµã
+//				//åˆ é™¤ç¬¬nä¸ªèŠ‚ç‚¹
 //				q = p->next;
 //				p->next = q->next;
 //				num = q->value;
 //				free(q);
-//				printf("É¾³ı³É¹¦^-^");
+//				printf("åˆ é™¤æˆåŠŸ^-^");
 //				return num;
 //			}
 //			else if (p->next) {
 //				num = p->next->value;
 //				free(p->next);
 //				p->next = NULL;
-//				printf("É¾³ı³É¹¦^-^");
+//				printf("åˆ é™¤æˆåŠŸ^-^");
 //				return num;
 //			}
-//			else  (printf("²»´æÔÚµÚ%d¸öÎ»ÖÃ", n));
+//			else  (printf("ä¸å­˜åœ¨ç¬¬%dä¸ªä½ç½®", n));
 //		}
 //		else if (n == 1) {
 //			q = (*plist);
 //			*plist = q->next;
 //			num = q->value;
 //			free(q);
-//			printf("É¾³ı³É¹¦^-^");
+//			printf("åˆ é™¤æˆåŠŸ^-^");
 //			return num;
 //		}
-//		else  (printf("²»´æÔÚµÚ%d¸öÎ»ÖÃ", n));
+//		else  (printf("ä¸å­˜åœ¨ç¬¬%dä¸ªä½ç½®", n));
 //	}
 //	return ERROR;
 //}
 //
-//void Changedate(List* plist,int num, int n)//ĞŞ¸ÄÁ´±íÖĞµÚn¸ö½ÚµãµÄÊıÖµÎªnum
+//void Changedate(List* plist,int num, int n)//ä¿®æ”¹é“¾è¡¨ä¸­ç¬¬nä¸ªèŠ‚ç‚¹çš„æ•°å€¼ä¸ºnum
 //{
 //	int cnt = 1;
 //	Node* p = *plist;
-//	//ÕÒµ½µÚn¸ö½Úµã
+//	//æ‰¾åˆ°ç¬¬nä¸ªèŠ‚ç‚¹
 //	while (p->next && cnt < n) {
 //		p = p->next;
 //		cnt++;
@@ -304,11 +303,11 @@ int main()
 //	(*list)->next = NULL;
 //}
 //
-//void Reverse(List* plist)//·´Ïò
+//void Reverse(List* plist)//åå‘
 //{
 //	List p=*plist,q,r;
 //	int i;
-//	//ÅĞ¶ÏÁ´±í½ÚµãÊıÊÇ·ñ´óÓÚ2
+//	//åˆ¤æ–­é“¾è¡¨èŠ‚ç‚¹æ•°æ˜¯å¦å¤§äº2
 //	for (i = 0;p->next&&i<3;i++){
 //		p = p->next;
 //	}
@@ -331,10 +330,10 @@ int main()
 //		(*plist)->next->next = NULL;
 //		(*plist)->next = q;
 //	}
-//	printf("·´Ïò³É¹¦^-^\n");
+//	printf("åå‘æˆåŠŸ^-^\n");
 //}
 //
-//void Reverse_1_2(List* plist)//ÆæÅ¼·´×ª
+//void Reverse_1_2(List* plist)//å¥‡å¶åè½¬
 //{
 //	List p = *plist;
 //	int a;
@@ -345,7 +344,7 @@ int main()
 //		p->next->next->value = a;
 //		p = p->next->next;
 //	}
-//	printf("ÆæÅ¼·´×ª³É¹¦^-^\n");
+//	printf("å¥‡å¶åè½¬æˆåŠŸ^-^\n");
 //}
 //
 //int Scanf_d(void) {
@@ -354,7 +353,7 @@ int main()
 //	ret=scanf_s("%d", &scan);
 //	while (ret != 1) {
 //		while (getchar() != '\n');
-//		printf("ÊäÈë´íÎó£¬ÇëÖØĞÂÊäÈë£º");
+//		printf("è¾“å…¥é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼š");
 //		ret = scanf_s("%d", &scan);
 //	}
 //	while (getchar() != '\n');
@@ -365,12 +364,12 @@ int main()
 //	List p=(*plist);
 //	while (p->next) { p = p->next; }
 //	p->next = (*plist);
-//	printf("Á´±í³É»·³É¹¦^-^\n");
+//	printf("é“¾è¡¨æˆç¯æˆåŠŸ^-^\n");
 //}
 //
 //void CircularStatus(List list)
 //{
-//	int flag = 1;//ÅĞ¶ÏÁ´±íÊÇ·ñ³É»·±êÖ¾Î»						
+//	int flag = 1;//åˆ¤æ–­é“¾è¡¨æ˜¯å¦æˆç¯æ ‡å¿—ä½						
 //	if (list->next)	{					
 //		Node* p = list->next;			
 //		Node* q = list->next;
@@ -379,7 +378,7 @@ int main()
 //				p = p->next->next;
 //				if (p == q || p == q->next)
 //				{
-//					printf("Á´±í³É»·\n");
+//					printf("é“¾è¡¨æˆç¯\n");
 //					flag = 0;
 //					break;
 //				}
@@ -387,32 +386,32 @@ int main()
 //			} while (p && p->next);
 //		}
 //		if(flag){
-//			printf("Á´±í²»³É»·\n");
+//			printf("é“¾è¡¨ä¸æˆç¯\n");
 //		}
 //	}
 //}
 //
-//void GetMidNum(List list)//Ñ°ÕÒÖĞ¼ä½Úµã
+//void GetMidNum(List list)//å¯»æ‰¾ä¸­é—´èŠ‚ç‚¹
 //{
-//	if (list->next)						//ÅĞ¶ÏÊÇ·ñÎª¿ÕÁ´±í
+//	if (list->next)						//åˆ¤æ–­æ˜¯å¦ä¸ºç©ºé“¾è¡¨
 //	{
-//		Node* p = list->next;			//¶¨Òå¿ìÂıÖ¸Õë
+//		Node* p = list->next;			//å®šä¹‰å¿«æ…¢æŒ‡é’ˆ
 //		Node* q = list->next;
 //		while (p->next && p->next->next){
 //			p = p->next->next;			
 //			q = q->next;				
 //		} 			
-//		if (p->next) {//½ÚµãÊıÎªÅ¼Êı£¬ÔòÓĞÁ½¸öÖĞµã
-//			printf("ÖĞµãÑ°ÕÒ³É¹¦^-^,ÖĞµãÎª%dºÍ%d\n", q->value, q->next->value);
-//		}//½ÚµãÊıÎªÆæÊı£¬ÔòÓĞÁ½¸öÖĞµã
-//		else{printf("ÖĞµãÑ°ÕÒ³É¹¦^-^,ÖĞµãÎª%d\n", q->value);}	
+//		if (p->next) {//èŠ‚ç‚¹æ•°ä¸ºå¶æ•°ï¼Œåˆ™æœ‰ä¸¤ä¸ªä¸­ç‚¹
+//			printf("ä¸­ç‚¹å¯»æ‰¾æˆåŠŸ^-^,ä¸­ç‚¹ä¸º%då’Œ%d\n", q->value, q->next->value);
+//		}//èŠ‚ç‚¹æ•°ä¸ºå¥‡æ•°ï¼Œåˆ™æœ‰ä¸¤ä¸ªä¸­ç‚¹
+//		else{printf("ä¸­ç‚¹å¯»æ‰¾æˆåŠŸ^-^,ä¸­ç‚¹ä¸º%d\n", q->value);}	
 //	}
-//	else { printf("¸ÃÁ´±íÎª¿Õ£¬ÎŞÖĞ¼ä½Úµã\n"); }
+//	else { printf("è¯¥é“¾è¡¨ä¸ºç©ºï¼Œæ— ä¸­é—´èŠ‚ç‚¹\n"); }
 //}
 //
 //void FindNum(List list, int num)
 //{
-//	int cnt=0;//¼ÆÊıÆ÷£¬ÓÃÀ´¼ÇÈë²éÕÒÊınumµÄ¸öÊı
+//	int cnt=0;//è®¡æ•°å™¨ï¼Œç”¨æ¥è®°å…¥æŸ¥æ‰¾æ•°numçš„ä¸ªæ•°
 //	Node* p = list->next;
 //	for (;p;p = p->next)
 //	{
@@ -421,9 +420,9 @@ int main()
 //		}
 //	}
 //	if (cnt) {
-//		printf("^-^´æÔÚÊı¾İ%d£¬¸öÊıÎª%d", num, cnt);
+//		printf("^-^å­˜åœ¨æ•°æ®%dï¼Œä¸ªæ•°ä¸º%d", num, cnt);
 //	}
-//	else { printf("Î´ÕÒµ½%d", num); }
+//	else { printf("æœªæ‰¾åˆ°%d", num); }
 //	
 //}
 //
